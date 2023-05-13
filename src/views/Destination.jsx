@@ -23,8 +23,8 @@ const Destination = () => {
     <Navbar/>
     <div className="destination">
       <h1>{destination.name}</h1>
-      <img src={destination.image} alt={destination.name} />
       <p>{destination.description}</p>
+      <img src={destination.image} alt={destination.name} />
       <h2>Attractions:</h2>
       <ul>
         {destination.attractions.map((attraction, index) => (
