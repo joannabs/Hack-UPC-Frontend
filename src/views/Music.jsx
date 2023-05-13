@@ -9,17 +9,19 @@ const Songs = () => {
   const getSongs = () => {
     axios.get('http://10.5.237.7:8080/songs').then((response) => {
       console.log(response);
-    });
+      response.data;
+    })
   }
 
 
-  const initialSongs = [
-    { id: 1, name: 'Song 1', votes: 0 },
-    { id: 2, name: 'Song 2', votes: 0 },
-    { id: 3, name: 'Song 3', votes: 0 },
-  ];
+  // const initialSongs = [
+  //   { id: 1, name: 'Song 1', votes: 0 },
+  //   { id: 2, name: 'Song 2', votes: 0 },
+  //   { id: 3, name: 'Song 3', votes: 0 },
+  // ];
 
-  const [songs, setSongs] = useState(initialSongs);
+  const [songs, setSongs] = useState(null);
+
 
   const handleVoteClick = (id) => {
     const updatedSongs = songs.map((song) => {
