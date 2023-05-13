@@ -1,10 +1,5 @@
 import React from 'react'
-// import Button from 'react-bootstrap/Button';
-// import Card from 'react-bootstrap/Card';
-// import cinema from "./cinema.jpg";
-// import { Row, Col } from 'react-bootstrap';
 import './Home.css';
-import music from "./music.jpg";
 import music2 from "./music2.jpg";
 import { Link } from 'react-router-dom';
 
