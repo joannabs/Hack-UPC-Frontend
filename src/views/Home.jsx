@@ -4,18 +4,21 @@ import music3 from "./music3.jpg";
 import destination from "./destination.jpg";
 import movie from "./movie.jpg";
 import games from "./games.jpg";
-import { useLocation, Link } from 'react-router-dom';
+import {useLocation, Link} from 'react-router-dom';
+import logo from './Enterflightment.png';
 
 const Home = () => {
   const location = useLocation()
   const { name } = location.state
   return(
     <>
-    <div>
-      <p className='welcome'>Welcome, {name}</p>
-    </div>
-    
-    <div className='card-container' >
+     <div>
+        <img className="logo" src={logo} />
+      </div>
+      <div>
+        <p className='welcome'>Welcome, {name}</p>
+      </div>   
+      <div className='card-container' >
         {/* Card 1 */}
         <Link to="/music" className="card" style={{ backgroundImage: `url(${music3})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
         <div className="card-content" >
@@ -48,21 +51,6 @@ const Home = () => {
   );
 }
 
-export default Home
+export default Home;
 
 
-  // <Row>
-  // <Col md={3}>
-  //     <Card>
-  //       <Card.Img variant="top" src={cinema} />
-  //       <Card.Body>
-  //         <Card.Title>Card Title</Card.Title>
-  //         <Card.Subtitle>
-  //           Some quick example text to build on the card title and make up the
-  //           bulk of the card's content.
-  //         </Card.Subtitle>
-  //         <Button variant="primary">Go somewhere</Button>
-  //       </Card.Body>
-  //     </Card>
-  //   </Col>
-  // </Row>

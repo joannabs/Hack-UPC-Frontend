@@ -1,6 +1,5 @@
 .Login {
     background-color: white;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,19 +9,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    width: fit-content;
+    height: fit-content;
   }
   
   .Auth-form {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: auto;
     text-align: center;
     width: 420px;
     box-shadow: #c9c9c9 1px 1px 10px;
-    padding-top: 30px;
-    padding-bottom: 20px;
+    padding-top: 0px;
+    padding-bottom: 40px;
     border-radius: 8px;
     background-color: #FFCC00;
     
@@ -38,7 +37,6 @@
   
   .Auth-form-title {
     text-align: center;
-    margin-bottom: 1em;
     font-size: 40px;
     color: #4D4D4D;
     font-weight: 900;
@@ -46,7 +44,7 @@
   
   label {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 400;
     color: #4D4D4D;
   }
 
@@ -82,5 +80,11 @@
     margin: 0 10px;
   }
   
+  .logo2 {
+    width: 250px;
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+
   
   

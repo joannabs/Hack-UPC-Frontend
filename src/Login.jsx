@@ -3,6 +3,8 @@ import './Login.css';
 import { Link } from 'react-router-dom';
 
 
+import logo from './views/Enterflightment.png';
+
 const Login = () => {
   const [inputValue, setInputValue] = useState('');
   const handleInputChange = (e) => {
@@ -15,8 +17,12 @@ const Login = () => {
   };
 
   return(
-    <div className="Login">
-      <form className="Auth-form"  onSubmit={handleSubmit}>
+    <>
+  <div>
+    <img className= "logo2" src={logo} />
+  </div>
+  <div className="Login">
+    <form className="Auth-form"  onSubmit={handleSubmit}>
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Log In</h3>
           <div className="form-group mt-3">
@@ -41,7 +47,8 @@ const Login = () => {
           </div>
         </div>
       </form>
-    </div>
-  );
+      </div>
+  </>
+);
 }
 export default Login;
