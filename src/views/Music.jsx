@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import './Music.css';
-import Axios from 'axios';
-
+import axios from 'axios';
 
 const Songs = () => {
-  const [joke, setJoke] = useState("")
-  const getJoke=() =>{
-    Axios.get("").then(
-      (response) => {
-        console.log(response)
-        setJoke(response.data.setup + " ... " + response.data.punchLine)
-      }
-    )
 
+
+  const getSongs = () => {
+    axios.get('http://10.5.237.7:8080/songs').then((response) => {
+      console.log(response);
+    });
   }
+
+
   const initialSongs = [
     { id: 1, name: 'Song 1', votes: 0 },
     { id: 2, name: 'Song 2', votes: 0 },
@@ -36,6 +34,9 @@ const Songs = () => {
   return (
     <>
     <Navbar/>
+    <div>
+    <button onClick={getSongs}>Get Songs</button>
+    </div>
     <div className="songs">
       <h1>Songs</h1>
       {songs.map((song) => (
