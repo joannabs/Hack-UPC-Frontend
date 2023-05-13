@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect, useState } from 'react';
 import './Home.css';
 import music3 from "./music3.jpg";
 import destination from "./destination.jpg";
@@ -8,15 +8,27 @@ import {useLocation, Link} from 'react-router-dom';
 import logo from './Enterflightment.png';
 
 const Home = () => {
-  const location = useLocation()
-  const { name } = location.state
+
+  const [value, setValue] = useState('');
+
+  // const location = useLocation()
+  // const { name } = location.state
+
+  useEffect(() => {
+    const storedValue = localStorage.getItem('myVariable');
+    if (storedValue) {
+      setValue(storedValue);
+    }
+    // Use the storedValue as needed in your component or pass it to other components
+  }, []);
+
   return(
     <>
      <div>
         <img className="logo" src={logo} />
       </div>
       <div>
-        <p className='welcome'>Welcome, {name}</p>
+        <p className='welcome'>Welcome, {value}</p> 
       </div>   
       <div className='card-container' >
         {/* Card 1 */}

@@ -8,12 +8,17 @@ import logo from './views/Enterflightment.png';
 const Login = () => {
   const [inputValue, setInputValue] = useState('');
   const handleInputChange = (e) => {
+    localStorage.setItem('myVariable', inputValue);
     setInputValue(e.target.value);
+    
   };
 
   const handleSubmit = (e) => {
+    
     e.preventDefault();
+    // Do something with the input value
     console.log('Input value:', inputValue);
+    
   };
 
   return(
@@ -29,6 +34,7 @@ const Login = () => {
             <div className="form-row">
               <div className="col">
                 <label>Write a username to start</label>
+                
                   <input
                     type="username"
                     className="form-control mt-1"

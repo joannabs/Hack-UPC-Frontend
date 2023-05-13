@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import './Music.css';
 
+
 const Songs = () => {
   const initialSongs = [
     { id: 1, name: 'Song 1', votes: 0 },
