@@ -1,25 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import './Music.css';
 import axios from 'axios';
 
 const Songs = () => {
+  const [value, setValue] = useState('');
+  const [songs, setSongs] = useState([]);
 
-
+  useEffect(() => {
+    getSongs();
+  }, [])
+  
   const getSongs = () => {
     axios.get('http://10.5.237.7:8080/songs').then((response) => {
-      console.log(response);
+      setSongs(response.data);
     });
   }
-
-
-  const initialSongs = [
-    { id: 1, name: 'Song 1', votes: 0 },
-    { id: 2, name: 'Song 2', votes: 0 },
-    { id: 3, name: 'Song 3', votes: 0 },
-  ];
-
-  const [songs, setSongs] = useState(initialSongs);
 
   const handleVoteClick = (id) => {
     const updatedSongs = songs.map((song) => {
@@ -35,25 +31,25 @@ const Songs = () => {
     <>
     <Navbar/>
     <div>
-    <button onClick={getSongs}>Get Songs</button>
+    {/* <button onClick={getSongs}>Get Songs</button> */}
     </div>
     <div className="songs">
       <h1>Songs</h1>
       {songs.map((song) => (
         <SongCard
           key={song.id}
-          name={song.name}
-          votes={song.votes}
-          voted={song.voted}
-          onVoteClick={() => handleVoteClick(song.id)}
+          name={song.title}
+          // votes={song.votes}
+          // voted={song.voted}
+          // onVoteClick={() => handleVoteClick(song.id)}
         />
       ))}
     </div>
   </>
   );
 };
-
-const SongCard = ({ name, votes, voted, onVoteClick }) => {
+// votes, voted, onVoteClick 
+const SongCard = ({ name}) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlayClick = () => {
@@ -65,14 +61,14 @@ const SongCard = ({ name, votes, voted, onVoteClick }) => {
     
     <div className="song-card">
        <h3>{name}</h3>
-      <p>Votes: {votes}</p>
+      {/* <p>Votes: {votes}</p>
       {!voted && (
         <div className="buttons">
           <button className="vote-button" onClick={onVoteClick}>
             Vote
           </button>
         </div>
-      )}
+      )} */}
         <button className="play-button" onClick={handlePlayClick}>
           {isPlaying ? 'Delete from playlist' : 'Add to playlist'}
         </button>
