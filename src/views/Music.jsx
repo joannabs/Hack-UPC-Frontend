@@ -22,6 +22,8 @@ const Songs = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="songs">
       <h1>Songs</h1>
       {songs.map((song) => (
@@ -34,6 +36,7 @@ const Songs = () => {
         />
       ))}
     </div>
+  </>
   );
 };
 
@@ -46,7 +49,7 @@ const SongCard = ({ name, votes, voted, onVoteClick }) => {
 
   return (
     <>
-    <Navbar/>
+    
     <div className="song-card">
        <h3>{name}</h3>
       <p>Votes: {votes}</p>
