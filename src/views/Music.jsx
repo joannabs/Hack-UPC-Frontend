@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from '../components/Navbar/Navbar';
 import './Music.css';
 
 const Songs = () => {
@@ -45,6 +46,7 @@ const SongCard = ({ name, votes, voted, onVoteClick }) => {
 
   return (
     <>
+    <Navbar/>
     <div className="song-card">
        <h3>{name}</h3>
       <p>Votes: {votes}</p>

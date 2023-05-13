@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Navbar from '../components/Navbar/Navbar';
 import './Films.css';
 const Films = () => {
   const [films, setFilms] = useState([]);
@@ -21,6 +22,8 @@ const Films = () => {
   }, []);
 
   return (
+    <>
+     <Navbar/>
     <div className="films">
       <h1>Films</h1>
       
@@ -36,6 +39,7 @@ const Films = () => {
         </div>
       ))} */}
     </div>
+    </>
   );
 };
 

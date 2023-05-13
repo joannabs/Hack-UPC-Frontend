@@ -6,16 +6,17 @@ import Films from './views/Films';
 import Music from './views/Music';
 import Games from './views/Games';
 import Destination from './views/Destination';
-import Navbar from './components/Navbar/Navbar';
+//import Navbar from './components/Navbar/Navbar';
+import Login from './Login';
 
 function App() {
   return (
     <BrowserRouter>
     <div>
       <section>
-        <Navbar/>
         <Routes>
-          <Route path='/' element={<Home/>} />
+          <Route path='/' element={<Login/>} />
+          <Route path='/home' element={<Home/>} />
           <Route path='/films' element={<Films/>}/>
           <Route path='/games' element={<Games/>}/>
           <Route path='/music' element={<Music/>}/>
