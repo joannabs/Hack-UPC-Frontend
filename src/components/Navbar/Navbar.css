@@ -1,0 +1,24 @@
+.navbar {
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  .nav-button {
+    background-color: #e0e0e0;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .nav-button:hover {
+    background-color: #d2d2d2;
+  }
+  
