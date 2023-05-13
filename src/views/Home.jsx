@@ -6,13 +6,9 @@ import movie from "./movie.jpg";
 import games from "./games.jpg";
 import { useLocation, Link } from 'react-router-dom';
 
-
 const Home = () => {
   const location = useLocation()
   const { name } = location.state
-
-
-
   return(
     <>
     <div>
