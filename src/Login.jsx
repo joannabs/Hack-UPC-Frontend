@@ -1,8 +1,16 @@
 import React from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom';
+import logo from './views/Enterflightment.png';
+import {Row} from 'react-bootstrap';
+
 const Login = () => (
+  <>
+  <div>
+    <img className= "logo2" src={logo} />
+  </div>
   <div className="Login">
+    <div className="row">
     <form className="Auth-form">
       <div className="Auth-form-content">
         <h3 className="Auth-form-title">Log In</h3>
@@ -25,7 +33,9 @@ const Login = () => (
         </div>
       </div>
     </form>
+    </div>
   </div>
+  </>
 );
 
 export default Login;

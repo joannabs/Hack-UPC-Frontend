@@ -38,5 +38,10 @@
     line-height: 1.5;
     font-weight: 750;
     color: #333333;
-    margin-top: 20px; /* Add this line for top separation */
+    margin-top: 20px;
 }
+
+.logo {
+    width: 200px;
+    height: auto;
+  }

@@ -5,8 +5,13 @@ import destination from "./destination.jpg";
 import movie from "./movie.jpg";
 import games from "./games.jpg";
 import { Link } from 'react-router-dom';
+import logo from './Enterflightment.png';
 
 const Home = () => (
+  <>
+  <div>
+    <img className="logo" src={logo} />
+  </div>
   <div className='card-container' >
       {/* Card 1 */}
       <Link to="/music" className="card" style={{ backgroundImage: `url(${music3})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
@@ -36,6 +41,7 @@ const Home = () => (
       </Link>
 
     </div>
+    </>
 );
 
 export default Home
