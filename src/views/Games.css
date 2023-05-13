@@ -1,6 +1,6 @@
 
  .tic-body {
-    background: #222;
+    background: #ffffff;
     font-family: consolas;
     padding: 0;
     margin: 0;
@@ -13,15 +13,15 @@
     text-align: center;
   }
   .tic-tac-toe h1 {
-    color: #eee;
+    color: #fad503;
   }
   
   .tic-tac-toe button {
     padding: 8px 12px;
     margin: 25px;
-    background: transparent;
-    border: 2px solid #eee;
-    color: #eee;
+    background-color: #fad503;
+    border: 2px solid #ffea8b;
+    color: #fffffa;
     width: 100px;
     border-radius: 5px;
     transition: 0.2s;
@@ -30,8 +30,8 @@
   }
   
   .tic-tac-toe button:hover {
-    background: #eee;
-    color: #222;
+    background: #ffffff;
+    color: #fad503;
   }
   .tic-tac-toe .game {
     display: grid;
@@ -57,13 +57,13 @@
   
   .turn .square span.x::before,
   .turn .square span.x::after {
-    background: #222;
+    background: #FFCC00;
     transition: 0.2s;
   }
   
   .turn .square span.o {
     transition: 0.2s;
-    border-color: #222;
+    border-color: #FFCC00;
   }
   
   .turn::after {
@@ -72,7 +72,7 @@
     width: 50%;
     height: 100%;
     top: 0;
-    background: #49ff58;
+    background: #FFCC00;
     border-radius: 9px;
     z-index: -1;
     transition: 0.2s;
@@ -104,11 +104,11 @@
     background-color: rgba(0, 0, 0, 0.7);
   }
   .winner .text {
-    background: #111;
+    background: #F3F3F3;
     width: 70%;
     max-width: 400px;
     height: 300px;
-    border: 2px solid #eee;
+    border: 2px solid #FFCC00;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -120,13 +120,13 @@
   .winner .text h2 {
     font-size: 2.5em;
     margin: 15px 0;
-    color: #eee;
+    color: #333333;
   }
   
   .winner .win {
     margin: 0 auto;
     width: fit-content;
-    border: 2px solid #eee;
+    border: 2px solid #333333;
     border-radius: 10px;
     display: flex;
     gap: 15px;
