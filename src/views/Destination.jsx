@@ -1,8 +1,10 @@
 import React from 'react';
 import './Destination.css';
 import paris from './destination/paris.jpg';
+import Navbar from '../components/Navbar/Navbar';
 
 const Destination = () => {
+  
   const destination = {
     name: 'Paris',
     description: 'The city of love and lights',
@@ -17,6 +19,8 @@ const Destination = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="destination">
       <h1>{destination.name}</h1>
       <img src={destination.image} alt={destination.name} />
@@ -29,6 +33,7 @@ const Destination = () => {
       </ul>
       <h2>Rating: {destination.rating}</h2>
     </div>
+    </>
   );
 };
 
