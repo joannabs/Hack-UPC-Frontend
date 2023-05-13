@@ -1,8 +1,4 @@
 import React from 'react'
-// import Button from 'react-bootstrap/Button';
-// import Card from 'react-bootstrap/Card';
-// import cinema from "./cinema.jpg";
-// import { Row, Col } from 'react-bootstrap';
 import './Home.css';
 import music3 from "./music3.jpg";
 import destination from "./destination.jpg";
