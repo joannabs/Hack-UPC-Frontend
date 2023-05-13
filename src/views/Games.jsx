@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "../components/Button";
 import Square from "../components/Square";
 import "./Games.css";
+import Navbar from '../components/Navbar/Navbar';
 
 function Games() {
   const [squares, setSquares] = useState(Array(9).fill(""));
@@ -64,6 +65,8 @@ function Games() {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="tic-body">
         <div className="tic-tac-toe">
             <h1> TIC-TAC-TOE </h1>
@@ -150,6 +153,7 @@ function Games() {
             </AnimatePresence>
         </div>
     </div>
+    </>
   );
 }
 
