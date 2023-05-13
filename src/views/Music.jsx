@@ -10,7 +10,6 @@ const Songs = () => {
   useEffect(() => {
     getSongs();
   }, [])
-  //const onChange = ({ target }) => setValue(target.value);
   
   const getSongs = () => {
     axios.get('http://10.5.237.7:8080/songs').then((response) => {
