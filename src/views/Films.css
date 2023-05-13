@@ -1,38 +1,70 @@
-.films {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
+.player-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px; /* Adjust the height as needed */
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #FFCC00;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .films h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
+  100% {
+    transform: rotate(360deg);
   }
-  
-  .films .film {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .films .film h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .films .film h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .films .film ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .films .film li {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.film {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: inherit;
+  font-weight: 1000;
+  color: #4D4D4D;
+  font-size: xx-large;
+}
+
+.film1 {
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: inherit;
+  font-weight: 500;
+  color: #4D4D4D;
+  font-size: large;
+}
+
+.player-wrapper {
+  position: relative;
+  width: 80%;
+  padding-top: 56.25%;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
