@@ -20,6 +20,8 @@
     "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
     "sass": "^1.54.5",
+    "sockjs": "^0.3.24",
+    "sockjs-client": "^1.6.1",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {

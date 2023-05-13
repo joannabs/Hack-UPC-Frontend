@@ -1,0 +1,55 @@
+.songs {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: inherit;
+  }
+  
+  .songs h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .song-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .song-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .song-card p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .song-card .buttons {
+    display: flex;
+    justify-content: space-between;
+    font-family: inherit;
+  }
+  
+  .song-card .vote-button,
+  .song-card .play-button {
+    padding: 8px 16px;
+    font-size: 16px;
+    font-family: inherit;
+  }
+  
+  .song-card .vote-button {
+    background-color: #FFCC00;
+    color: white;
+    border: none;
+    font-family: inherit;
+  }
+  
+  .song-card .play-button {
+    background-color: #4D4D4D;
+    color: white;
+    border: none;
+    font-family: inherit;
+  }
+  

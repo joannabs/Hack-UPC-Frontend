@@ -1,14 +1,52 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Button from "../components/Button";
 import Square from "../components/Square";
 import "./Games.css";
 import Navbar from '../components/Navbar/Navbar';
+import Sockjs from "sockjs-client/dist/sockjs"
+import { useLocation } from 'react-router-dom'
+
 
 function Games() {
   const [squares, setSquares] = useState(Array(9).fill(""));
   const [turn, setTurn] = useState("x");
   const [winner, setWinner] = useState(null);
+  const location = useLocation()
+  const { idGame } = location.state
+  const [value, setValue] = useState('');
+
+
+  useEffect(() => {
+      const storedValue = localStorage.getItem('myVariable');
+      if (storedValue) {
+        setValue(storedValue);
+      }
+      console.log('http://10.5.237.7:8080/games/'+idGame+'?username='+storedValue)
+    }, []);
+    
+    useRef(() => { 
+        sock = new Sockjs('http://10.5.237.7:8080/games/'+idGame+'?username='+value);
+        sock.onopen = function() {
+            console.log('open');
+            //sock.send('test');
+        };
+       
+        sock.onmessage = function(e) {
+            console.log('message', e.data);
+          
+        };
+       
+        sock.onclose = function() {
+            console.log('close');
+        };
+
+    } )
+
+  var sock; 
+  
+  
+
 
   const checkEndTheGame = () => {
       for (let square of squares) {
