@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import './Music.css';
+import Axios from 'axios';
 
 
 const Songs = () => {
+  const [joke, setJoke] = useState("")
+  const getJoke=() =>{
+    Axios.get("").then(
+      (response) => {
+        console.log(response)
+        setJoke(response.data.setup + " ... " + response.data.punchLine)
+      }
+    )
+
+  }
   const initialSongs = [
     { id: 1, name: 'Song 1', votes: 0 },
     { id: 2, name: 'Song 2', votes: 0 },

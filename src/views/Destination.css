@@ -3,17 +3,18 @@
     margin: 0 auto;
     padding: 20px;
     text-align: center;
-    font-family: Arial, sans-serif;
+    font-family: inherit;
   }
   
   .destination h1 {
     font-size: 32px;
     margin-bottom: 10px;
+    font-family: inherit;
   }
   
   .destination img {
-    width: 100%;
-    max-height: 400px;
+    max-height: 200px;
+    max-width: auto;
     object-fit: cover;
     margin-bottom: 20px;
   }
@@ -21,22 +22,26 @@
   .destination p {
     font-size: 18px;
     margin-bottom: 20px;
+    font-family: inherit;
   }
   
   .destination h2 {
     font-size: 24px;
     margin-bottom: 10px;
+    font-family: inherit;
   }
   
   .destination ul {
     list-style-type: none;
     padding: 0;
     margin-bottom: 20px;
+    font-family: inherit;
   }
   
   .destination li {
     font-size: 18px;
     margin-bottom: 5px;
+    font-family: inherit;
   }
   
   .destination h2:last-child {
