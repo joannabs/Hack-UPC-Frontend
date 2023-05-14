@@ -8,6 +8,7 @@ import Games from './views/Games';
 import Destination from './views/Destination';
 //import Navbar from './components/Navbar/Navbar';
 import Login from './Login';
+import Rooms from './views/Rooms';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path='/' element={<Login/>} />
           <Route path='/home' element={<Home/>} />
           <Route path='/films' element={<Films/>}/>
+          <Route path='/rooms' element={<Rooms/>}/>
           <Route path='/games' element={<Games/>}/>
           <Route path='/music' element={<Music/>}/>
           <Route path='/destination' element={<Destination/>}/>
