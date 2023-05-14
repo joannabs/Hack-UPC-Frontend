@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import './Music.css';
 import axios from 'axios';
+import logo from './Enterflightment.png';
+
 
 const uri = 'http://10.5.237.7:8080';
 const Songs = () => {
@@ -52,6 +54,9 @@ const Songs = () => {
 
   return (
     <>
+    <div>
+      <img className="logo" src={logo} />
+    </div>
     <Navbar/>
     <div>
     {/* <button onClick={getSongs}>Get Songs</button> */}

@@ -4,6 +4,8 @@ import Button from "../components/Button";
 import Square from "../components/Square";
 import "./Games.css";
 import Navbar from '../components/Navbar/Navbar';
+import logo from './Enterflightment.png';
+
 
 function Games() {
   const [squares, setSquares] = useState(Array(9).fill(""));
@@ -66,6 +68,9 @@ function Games() {
 
   return (
     <>
+     <div>
+        <img className="logo" src={logo} />
+      </div>
     <Navbar/>
     <div className="tic-body">
         <div className="tic-tac-toe">
