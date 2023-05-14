@@ -76,9 +76,9 @@ const Rooms = () => {
             
                 <RoomCard
                 key={room.id}
-                name={room.name}
-                user={room.user1}
-                id={room.id}
+                game={room}
+                //user={room.user1}
+                //id={room.id}
                 // votes={song.votes}
                 // voted={song.voted}
                 // onVoteClick={() => handleVoteClick(song.id)}
@@ -91,7 +91,7 @@ const Rooms = () => {
   };
 
 
-  const RoomCard = ({ name, user, id}) => {
+  const RoomCard = ({ game }) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [value, setValue] = useState('');
 
@@ -105,8 +105,8 @@ const Rooms = () => {
       
     const handlePlayClick = () => {
       setIsPlaying(!isPlaying);
-      const data = {user2: value, name: name, password: "1234"};
-      axios.post("http://10.5.237.7:8080/games/"+id, data).then((response) => {
+      const data = {user2: value, name: game.name, password: "1234"};
+      axios.post("http://10.5.237.7:8080/games/"+game.id, data).then((response) => {
         console.log(response);  
       }, (error) => {
         console.log(error);
@@ -118,8 +118,8 @@ const Rooms = () => {
       <>
       
       <div className="song-card">
-         <h3>{name}</h3>
-         <div className="user"> Player connected: {user}</div>
+         <h3>{game.name}</h3>
+         <div className="user"> Player connected: {game.user1}</div>
         {/* <p>Votes: {votes}</p>
         {!voted && (
           <div className="buttons">
@@ -128,7 +128,7 @@ const Rooms = () => {
             </button>
           </div>
         )} */}
-            <Link to="/games" state={{ idGame: id }} className="nav-link">
+            <Link to="/games" state={{ game: game }} className="nav-link">
                 <button className="play-button" onClick={handlePlayClick}>
                     {isPlaying ? 'Disconnect' : 'Connect'}
                 </button>
