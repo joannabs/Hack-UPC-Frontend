@@ -77,7 +77,7 @@ const Songs = () => {
     <div className="column2">
       
       <h2>Playlist</h2>
-      {playlist[0] != null ? (<AudioPlayer songId={playlist[0].id} />):(<p>-----</p>)}
+      {playlist[0] != null ? (<AudioPlayer songId={playlist[0].id} name={playlist[0].title} artist={playlist[0].artist} />):(<p>-----</p>)}
     {playlist != null ? (playlist.map((song) => (
         <PlaylistCard
           key={song.id}
@@ -175,7 +175,7 @@ const PlaylistCard = ({name, id}) => {
   );
 };
 
-function AudioPlayer({ songId }) {
+function AudioPlayer({ songId, name, artist }) {
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -208,6 +208,8 @@ function AudioPlayer({ songId }) {
 
   return (
     <div>
+      <h3>Now playing:</h3>
+      <h4>{name} - by {artist}</h4>
       <audio ref={audioRef} controls autoPlay />
     </div>
   );
