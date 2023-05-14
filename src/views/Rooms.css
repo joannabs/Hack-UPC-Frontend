@@ -52,4 +52,12 @@
     border: none;
     font-family: inherit;
   }
+
+  .myInput {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    /* Add more styles as needed */
+  }
   
