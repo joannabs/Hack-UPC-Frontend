@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import './Rooms.css';
 import axios from 'axios';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Rooms = () => {
@@ -44,6 +44,7 @@ const Rooms = () => {
         console.log(response);
         const joc = response.data
         console.log(joc.id);
+        console.log(joc)
         navigate("/games", {state: { game: joc }});
     }, (error) => {
         console.log(error);

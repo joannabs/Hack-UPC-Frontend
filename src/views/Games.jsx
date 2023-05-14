@@ -6,7 +6,7 @@ import "./Games.css";
 import Navbar from '../components/Navbar/Navbar';
 //import SockJS from "sockjs-client/dist/sockjs.min.js"
 import { useLocation, useNavigate } from 'react-router-dom'
-import e from "cors";
+//import e from "cors";
 //import {Server as SocketServer} from "socket.io";
 
 function Games() {
@@ -16,7 +16,7 @@ function Games() {
   const [usuari2, setUsuari2] = useState("");
   const [winner, setWinner] = useState(null);
   const location = useLocation()
-  var { game } = location.state
+  const { game } = location.state
   const [value, setValue] = useState('');
   const navigate = useNavigate();
 
