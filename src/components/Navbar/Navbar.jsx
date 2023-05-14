@@ -14,8 +14,8 @@ const Navbar = () => {
       <Link to="/music" className="nav-link">
         <button className="nav-button">Music</button>
       </Link>
-      <Link to="/games" className="nav-link">
-        <button className="nav-button">Games</button>
+      <Link to="/rooms" className="nav-link">
+        <button className="nav-button">Game Rooms</button>
       </Link>
       <Link to="/destination" className="nav-link">
         <button className="nav-button">Destination</button>
