@@ -19,7 +19,6 @@ const Home = () => {
     if (storedValue) {
       setValue(storedValue);
     }
-    // Use the storedValue as needed in your component or pass it to other components
   }, []);
 
   return(
@@ -46,9 +45,9 @@ const Home = () => {
         </Link>
         
         {/* Card 3 */}
-        <Link to="/games" className="card" style={{ backgroundImage: `url(${games})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+        <Link to="/rooms" className="card" style={{ backgroundImage: `url(${games})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
         <div className="card-content" >
-            <p>Games</p>
+            <p>Game Rooms</p>
           </div>
         </Link>
         {/* Card 4 */}

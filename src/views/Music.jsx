@@ -4,6 +4,8 @@ import './Music.css';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faFastForward } from '@fortawesome/free-solid-svg-icons';
+import logo from './Enterflightment.png';
+
 
 const uri = 'http://10.5.237.7:8080';
 const Songs = () => {
@@ -62,6 +64,9 @@ const Songs = () => {
 
   return (
     <>
+    <div>
+      <img className="logo" src={logo} />
+    </div>
     <Navbar/>
     <div>
     {<div style={{ display: 'flex', alignItems: 'center' }}>

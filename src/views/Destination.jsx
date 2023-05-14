@@ -2,6 +2,9 @@ import React from 'react';
 import './Destination.css';
 import paris from './destination/paris.jpg';
 import Navbar from '../components/Navbar/Navbar';
+import logo from './Enterflightment.png';
+import {Col} from 'react-bootstrap'
+
 
 const Destination = () => {
   
@@ -20,18 +23,22 @@ const Destination = () => {
 
   return (
     <>
+     <div>
+        <img className="logo" src={logo} />
+      </div>
     <Navbar/>
     <div className="destination">
       <h1>{destination.name}</h1>
       <p>{destination.description}</p>
       <img src={destination.image} alt={destination.name} />
-      <h2>Attractions:</h2>
+      <Col>
+      <h2>Attractions</h2>
       <ul>
         {destination.attractions.map((attraction, index) => (
           <li key={index}>{attraction}</li>
         ))}
       </ul>
-      <h2>Rating: {destination.rating}</h2>
+      </Col>
     </div>
     </>
   );
