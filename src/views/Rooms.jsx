@@ -2,13 +2,26 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import './Rooms.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 
 const Rooms = () => {
 
     const [rooms, setRooms] = useState([]);
-   
+    const [inputValue, setInputValue] = useState('');
+    const [value, setValue] = useState('');
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const storedValue = localStorage.getItem('myVariable');
+        if (storedValue) {
+          setValue(storedValue);
+        }
+        
+      }, []);
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value);
+      };
 
     useEffect(() => {
       getRooms();
@@ -18,6 +31,23 @@ const Rooms = () => {
       axios.get('http://10.5.237.7:8080/games').then((response) => {
         setRooms(response.data.filter(room => room.user2 === ""));
       });
+    }
+
+//Navigate("/games", {state: { idGame: joc.id }});
+
+    const createRoom = () => {
+        axios.post('http://10.5.237.7:8080/games', {
+            name: inputValue,
+            user1: value,
+            password: "1234"
+    }).then((response) => {
+        console.log(response);
+        const joc = response.data
+        console.log(joc.id);
+        navigate("/games", {state: { game: joc }});
+    }, (error) => {
+        console.log(error);
+    },);
     }
   
   
@@ -29,6 +59,19 @@ const Rooms = () => {
       </div>
       <div className="songs">
         <h1>Game Rooms</h1>
+        
+        <div className="buttons">
+            <input className='myInput' type="text" placeholder="Room Name" onChange={handleInputChange}></input>
+            <button className="button" onClick={createRoom}>Create Room</button>
+            {/* <Link to="/games" state={{ idGame: id }}>
+                <button className="button">Create Room</button>
+            </Link> */}
+        </div>
+        <br></br>
+        <br></br>
+        <div className="songs">
+            <h4>Rooms available:</h4>
+        </div>
         {rooms.map((room) => (
             
                 <RoomCard

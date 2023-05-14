@@ -6,19 +6,21 @@ import "./Games.css";
 import Navbar from '../components/Navbar/Navbar';
 import logo from './Enterflightment.png';
 //import SockJS from "sockjs-client/dist/sockjs.min.js"
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import e from "cors";
 //import {Server as SocketServer} from "socket.io";
 
 
 function Games() {
   const [squares, setSquares] = useState(Array(9).fill(""));
-  const [turn, setTurn] = useState("x");
+  const [torn, setTorn] = useState('');
+  const [turn, setTurn] = useState("o");
+  const [usuari2, setUsuari2] = useState("");
   const [winner, setWinner] = useState(null);
   const location = useLocation()
-  const { idGame } = location.state
+  const { game } = location.state
   const [value, setValue] = useState('');
-
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -26,13 +28,19 @@ function Games() {
       if (storedValue) {
         setValue(storedValue);
       }
-      console.log('http://10.5.237.7:8080/games/'+idGame+'?username='+storedValue);
+      console.log('http://10.5.237.7:8080/games/'+game.id+'?username='+storedValue);
+      const modifiedArray = Array.from(game.board).map(item => item === '-' ? '' : item);
+      console.log(modifiedArray);
+      setSquares(modifiedArray)
+      setTurn(value === usuari2 ? "o" : "x");
+      setTorn(game.turn)
+      setUsuari2(game.user2)
       
     }, []);
 
    // const io = new SocketServer
     
-    var sock = new WebSocket( 'ws://10.5.237.7:8080/games/'+idGame+'?username='+value);
+    var sock = new WebSocket( 'ws://10.5.237.7:8080/games/'+game.id+'?username='+value);
     sock.onopen = function() {
         console.log('open');
         //sock.send('test');
@@ -48,6 +56,9 @@ function Games() {
         const modifiedArray = Array.from(dat.board).map(item => item === '-' ? '' : item);
         console.log(modifiedArray);
         setSquares(modifiedArray)
+        setTurn(value === usuari2 ? "o" : "x");
+        setTorn(dat.turn)
+        setUsuari2(dat.user2)
     };
    
     sock.onclose = function() {
@@ -91,10 +102,13 @@ function Games() {
       if (squares[ind] || winner) {
           return;
       }
+      if (torn !== value) {
+          return;
+      }
       const s = squares;
       s[ind] = turn;
       setSquares(s);
-      setTurn(turn === e.data ? "o" : "x");
+      setTurn(value === usuari2 ? "o" : "x");
       const W = checkWinner();
       if (W) {
           setWinner(W);
@@ -103,7 +117,7 @@ function Games() {
       }
       var auxarray = squares.map(item => item === '' ? '-' : item);
       var saux = auxarray.join('');
-      var tosend = JSON.stringify({id: idGame, board: saux, turn: turn});
+      var tosend = JSON.stringify({id: game.id, board: saux, turn: turn});
       sock.send(tosend);
   };
 
@@ -111,6 +125,7 @@ function Games() {
       setSquares(Array(9).fill(""));
       setTurn("x");
       setWinner(null);
+      navigate("/rooms", { replace: true});
   };
 
   return (
