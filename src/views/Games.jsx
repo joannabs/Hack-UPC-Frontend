@@ -6,7 +6,7 @@ import "./Games.css";
 import Navbar from '../components/Navbar/Navbar';
 import logo from './Enterflightment.png';
 //import SockJS from "sockjs-client/dist/sockjs.min.js"
-import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 import e from "cors";
 //import {Server as SocketServer} from "socket.io";
 
