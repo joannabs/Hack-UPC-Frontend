@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import './Music.css';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 const uri = 'http://10.5.237.7:8080';
 const Songs = () => {
@@ -60,7 +62,7 @@ const Songs = () => {
     <div className="songs">
       <div className="column1">
       <h1>Songs</h1>
-      {songs.map((song) => (
+      {songs.length > 0 ?(songs.map((song) => (
         <SongCard
           key={song.id}
           name={song.title}
@@ -70,12 +72,13 @@ const Songs = () => {
           // voted={song.voted}
           // onVoteClick={() => handleVoteClick(song.id)}
         />
-      ))}
+      ))):(<p>Songs not found</p>)}
     </div>
     <div className="column2">
       
       <h2>Playlist</h2>
-    {playlist.map((song) => (
+      {playlist[0] != null ? (<AudioPlayer songId={playlist[0].id} />):(<p>-----</p>)}
+    {playlist != null ? (playlist.map((song) => (
         <PlaylistCard
           key={song.id}
           name={song.title}
@@ -84,7 +87,7 @@ const Songs = () => {
           // voted={song.voted}
           // onVoteClick={() => handleVoteClick(song.id)}
         />
-      ))}
+      ))):(<p>Playlist is empty</p>)}
     </div>
     </div>
   </>
@@ -133,30 +136,82 @@ const PlaylistCard = ({name, id}) => {
   const getUpvotes = () => {
     console.log('Getting upvotes...');
     axios.get(uri+'/songs/upvotes').then((response) => {
-      const songId = id; // The songId you want to target
-    const songData = response.data.find((data) => data.songID === songId);
-    const upvotes = songData ? songData.upvotes : 0;
-    setUpvotes(upvotes);
+      console.log(response.data);
+      const songData = response.data && response.data.find((data) => data.songid == id);
+      const upvotes = songData ? songData.upvotes : 0;
+      setUpvotes(upvotes);
     });
   }
 
   const handlePlayClick = () => {
-    setIsVoted(!isVoted);
+    if(!isVoted){
+      setIsVoted(true);
+      setUpvotes(upvotes+1);
+      axios.put(uri+'/songs/'+id+'/upvotes');
+      const heartButton = document.getElementById('heartButton');
+      heartButton.classList.add('heart-button-clicked');
+    }
   };
 
   return (
     <>
-    
-    <div className="playlist-card">
-      <h3>{name}</h3>
-        <button className="vote-button" onClick={handlePlayClick}>
+      <div className="playlist-card">
+        <div className="row">
+          <div className="left">
+            <h3>{name}</h3>
+          </div>
+          <div className="right">
+          <button className={`heart-button${isVoted ? ' heart-button-clicked' : ''}`}onClick={handlePlayClick}id="heartButton">
+              <FontAwesomeIcon icon={faHeart} />
+            </button>
+          </div>
+        </div>
+        {/* <button className="vote-button" onClick={handlePlayClick}>
           {isVoted ? '' : 'Vote'}
-        </button>
+        </button> */}
         <p>Votes: {upvotes}</p>
       </div>
-    </>
+  </>
   );
 };
+
+function AudioPlayer({ songId }) {
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    const fetchAudioFile = async () => {
+      try {
+        const response = await axios.get(uri+`/songs/${songId}/file`, {
+          responseType: 'blob',
+        });
+
+        const audioBlob = new Blob([response.data], { type: 'audio/mpeg' });
+        const audioUrl = URL.createObjectURL(audioBlob);
+
+        if (audioRef.current) {
+          audioRef.current.src = audioUrl;
+        }
+      } catch (error) {
+        console.log('Error fetching audio file:', error);
+      }
+    };
+
+    fetchAudioFile();
+
+    // Clean up the audio URL when component unmounts
+    return () => {
+      if (audioRef.current) {
+        URL.revokeObjectURL(audioRef.current.src);
+      }
+    };
+  }, [songId]);
+
+  return (
+    <div>
+      <audio ref={audioRef} controls autoPlay />
+    </div>
+  );
+}
 
 
 export default Songs;
