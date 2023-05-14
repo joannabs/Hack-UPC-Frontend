@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import './Rooms.css';
 import axios from 'axios';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Rooms = () => {
@@ -44,6 +44,7 @@ const Rooms = () => {
         console.log(response);
         const joc = response.data
         console.log(joc.id);
+        console.log(joc)
         navigate("/games", {state: { game: joc }});
     }, (error) => {
         console.log(error);
@@ -57,9 +58,9 @@ const Rooms = () => {
       <div>
       {/* <button onClick={getSongs}>Get Songs</button> */}
       </div>
-      <div className="songs">
+      <div className="rooms">
         <h1>Game Rooms</h1>
-        
+        </div>
         <div className="buttons">
             <input className='myInput' type="text" placeholder="Room Name" onChange={handleInputChange}></input>
             <button className="button" onClick={createRoom}>Create Room</button>
@@ -69,7 +70,7 @@ const Rooms = () => {
         </div>
         <br></br>
         <br></br>
-        <div className="songs">
+        <div className="rooms">
             <h4>Rooms available:</h4>
         </div>
         {rooms.map((room) => (
@@ -85,7 +86,7 @@ const Rooms = () => {
                 /> 
             
         ))}
-      </div>
+      
     </>
     );
   };

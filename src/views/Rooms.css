@@ -1,8 +1,9 @@
-.songs {
+.rooms {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
     font-family: inherit;
+    text-align: center;
   }
   
   .songs h1 {

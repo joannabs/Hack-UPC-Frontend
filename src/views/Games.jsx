@@ -18,7 +18,7 @@ function Games() {
   const [usuari2, setUsuari2] = useState("");
   const [winner, setWinner] = useState(null);
   const location = useLocation()
-  var { game } = location.state
+  const { game } = location.state
   const [value, setValue] = useState('');
   const navigate = useNavigate();
 
