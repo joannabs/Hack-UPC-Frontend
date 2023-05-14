@@ -42,3 +42,16 @@ button {
 button:hover {
   border-color: #333333;
 }
+
+.navbar {
+  height: 80px;
+  background-color: #FFCC00;
+  position: relative;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Add this line to make the navbar occupy the entire width */
+  max-width: 100%; /* Add this line to ensure the navbar doesn't exceed the screen width */
+}
+
