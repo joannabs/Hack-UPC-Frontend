@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar/Navbar';
 import './Music.css';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faFastForward } from '@fortawesome/free-solid-svg-icons';
 
 const uri = 'http://10.5.237.7:8080';
 const Songs = () => {
@@ -42,6 +42,14 @@ const Songs = () => {
     });
   }
 
+  const nextSong = () => {
+    console.log('Next song');
+    axios.get(uri+'/songs/next')
+    // .then(() => {
+    //   getPlaylist();
+    // });
+  }
+
   // const handleVoteClick = (id) => {
   //   const updatedSongs = songs.map((song) => {
   //     if (song.id === id) {
@@ -56,7 +64,12 @@ const Songs = () => {
     <>
     <Navbar/>
     <div>
-    {/* <button onClick={getSongs}>Get Songs</button> */}
+    {<div style={{ display: 'flex', alignItems: 'center' }}>
+      <button style={{ marginLeft: '10px', backgroundColor: '#4D4D4D' }} onClick={nextSong()}>
+        {/* <FontAwesomeIcon icon={faFastForward} style={{color: "white"}} /> */}
+        next
+      </button>
+    </div>}
     </div>
 
     <div className="songs">
@@ -76,8 +89,9 @@ const Songs = () => {
     </div>
     <div className="column2">
       
-      <h2>Playlist</h2>
-      {playlist[0] != null ? (<AudioPlayer songId={playlist[0].id} name={playlist[0].title} artist={playlist[0].artist} />):(<p>-----</p>)}
+    <h2>Playlist</h2>
+
+      {playlist != null && playlist[0] != null ? (<AudioPlayer songId={playlist[0].id} name={playlist[0].title} artist={playlist[0].artist} />):(<p>-----</p>)}
     {playlist != null ? (playlist.map((song) => (
         <PlaylistCard
           key={song.id}
