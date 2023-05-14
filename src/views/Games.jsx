@@ -1,12 +1,13 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Button from "../components/Button";
 import Square from "../components/Square";
 import "./Games.css";
 import Navbar from '../components/Navbar/Navbar';
-import Sockjs from "sockjs-client/dist/sockjs"
+//import SockJS from "sockjs-client/dist/sockjs.min.js"
 import { useLocation } from 'react-router-dom'
-
+import e from "cors";
+//import {Server as SocketServer} from "socket.io";
 
 function Games() {
   const [squares, setSquares] = useState(Array(9).fill(""));
@@ -17,35 +18,39 @@ function Games() {
   const [value, setValue] = useState('');
 
 
+
   useEffect(() => {
       const storedValue = localStorage.getItem('myVariable');
       if (storedValue) {
         setValue(storedValue);
       }
-      console.log('http://10.5.237.7:8080/games/'+idGame+'?username='+storedValue)
+      console.log('http://10.5.237.7:8080/games/'+idGame+'?username='+storedValue);
+      
     }, []);
+
+   // const io = new SocketServer
     
-    useRef(() => { 
-        sock = new Sockjs('http://10.5.237.7:8080/games/'+idGame+'?username='+value);
-        sock.onopen = function() {
-            console.log('open');
-            //sock.send('test');
-        };
-       
-        sock.onmessage = function(e) {
-            console.log('message', e.data);
-          
-        };
-       
-        sock.onclose = function() {
-            console.log('close');
-        };
-
-    } )
-
-  var sock; 
-  
-  
+    var sock = new WebSocket( 'ws://10.5.237.7:8080/games/'+idGame+'?username='+value);
+    sock.onopen = function() {
+        console.log('open');
+        //sock.send('test');
+    };
+    sock.addEventListener('open', () => {
+        console.log('open');
+    });
+   
+    sock.onmessage = function(e) {
+        console.log('message', e.data);
+        const dat = JSON.parse(e.data);
+        console.log(dat.board);
+        const modifiedArray = Array.from(dat.board).map(item => item === '-' ? '' : item);
+        console.log(modifiedArray);
+        setSquares(modifiedArray)
+    };
+   
+    sock.onclose = function() {
+        console.log('close');
+    };
 
 
   const checkEndTheGame = () => {
@@ -87,13 +92,17 @@ function Games() {
       const s = squares;
       s[ind] = turn;
       setSquares(s);
-      setTurn(turn === "x" ? "o" : "x");
+      setTurn(turn === e.data ? "o" : "x");
       const W = checkWinner();
       if (W) {
           setWinner(W);
       } else if (checkEndTheGame()) {
           setWinner("x | o");
       }
+      var auxarray = squares.map(item => item === '' ? '-' : item);
+      var saux = auxarray.join('');
+      var tosend = JSON.stringify({id: idGame, board: saux, turn: turn});
+      sock.send(tosend);
   };
 
   const resetGame = () => {

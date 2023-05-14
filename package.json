@@ -13,13 +13,17 @@
     "@popperjs/core": "^2.11.7",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "framer-motion": "^7.2.1",
+    "morgan": "^1.10.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
     "sass": "^1.54.5",
+    "socket.io": "^4.6.1",
     "sockjs": "^0.3.24",
     "sockjs-client": "^1.6.1",
     "web-vitals": "^2.1.4"
@@ -32,6 +36,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
+    "nodemon": "^2.0.22",
     "sass": "^1.62.1",
     "vite": "^4.3.2"
   }
