@@ -14,11 +14,11 @@ import e from "cors";
 function Games() {
   const [squares, setSquares] = useState(Array(9).fill(""));
   const [torn, setTorn] = useState('');
-  const [turn, setTurn] = useState("o");
+  const [turn, setTurn] = useState("");
   const [usuari2, setUsuari2] = useState("");
   const [winner, setWinner] = useState(null);
   const location = useLocation()
-  const { game } = location.state
+  var { game } = location.state
   const [value, setValue] = useState('');
   const navigate = useNavigate();
 
@@ -32,9 +32,10 @@ function Games() {
       const modifiedArray = Array.from(game.board).map(item => item === '-' ? '' : item);
       console.log(modifiedArray);
       setSquares(modifiedArray)
+      setUsuari2(game.user2)
       setTurn(value === usuari2 ? "o" : "x");
       setTorn(game.turn)
-      setUsuari2(game.user2)
+   
       
     }, []);
 
@@ -50,15 +51,20 @@ function Games() {
     });
    
     sock.onmessage = function(e) {
-        console.log('message', e.data);
-        const dat = JSON.parse(e.data);
-        console.log(dat.board);
+       
+        var dat = JSON.parse(e.data);
+        //game=dat;
         const modifiedArray = Array.from(dat.board).map(item => item === '-' ? '' : item);
-        console.log(modifiedArray);
+        game.board=modifiedArray;
         setSquares(modifiedArray)
-        setTurn(value === usuari2 ? "o" : "x");
-        setTorn(dat.turn)
         setUsuari2(dat.user2)
+        console.log(dat.user2)
+        console.log(value)
+        console.log(value === dat.user2)
+        setTurn(value === dat.user2 ? "o" : "x");
+        setTorn(dat.turn)
+        
+       
     };
    
     sock.onclose = function() {
